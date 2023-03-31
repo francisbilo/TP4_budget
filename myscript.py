@@ -1,13 +1,12 @@
 import os
+import sys
 
 
-def main():
-    bad_hash = input('Enter bad commit hash : ')
-    good_hash = input('Enter good commit hash : ')
+def main(bad_hash, good_hash):
     os.system(f'git bisect start {bad_hash} {good_hash}')
     os.system('git bisect run python manage.py test')
     os.system('git bisect reset')
 
 
 if __name__ == "__main__":
-    main()
+    main(sys.argv[1], sys.argv[2])
